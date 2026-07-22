@@ -1,0 +1,115 @@
+backend:
+  name: github
+  repo: F0ka/pcblibya-site
+  branch: main
+  base_url: https://pcblibya.com/oauth
+  auth_endpoint: /auth
+
+media_folder: "public/images"
+public_folder: "/images"
+
+site_url: https://pcblibya.com
+display_url: https://pcblibya.com
+logo_url: /images/pcb-placeholder.svg
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    extension: "mdx"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+      - { label: "Summary", name: "summary", widget: "text" }
+      - { label: "Cover image", name: "cover", widget: "image", required: true }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        allow_add: true
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["Completed", "In progress", "Planned"]
+        default: "In progress"
+      - label: "Downloads"
+        name: "downloads"
+        widget: "list"
+        required: false
+        summary: "{{fields.label}}"
+        fields:
+          - { label: "Label", name: "label", widget: "string" }
+          - label: "File path (under /files/<slug>/...)"
+            name: "file"
+            widget: "string"
+            hint: "Files are served by nginx outside the Next app, e.g. /files/esp32-dev-board/esp32-dev-board-kicad.zip"
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "blog"
+    label: "Tutorials"
+    folder: "content/blog"
+    create: true
+    extension: "mdx"
+    format: "frontmatter"
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - label: "Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+      - { label: "Summary", name: "summary", widget: "text" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        allow_add: true
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "downloads"
+    label: "Download Center"
+    files:
+      - name: "downloads"
+        label: "Downloads data"
+        file: "content/downloads.json"
+        description: "Hosted downloads and third-party software links shown on /downloads"
+        fields:
+          - label: "Hosted downloads"
+            name: "hosted"
+            label_singular: "hosted download"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "Version", name: "version", widget: "string" }
+              - { label: "Size", name: "size", widget: "string" }
+              - label: "File path (under /files/...)"
+                name: "href"
+                widget: "string"
+                hint: "Served by nginx outside the Next app, e.g. /files/esp32-dev-board/esp32-dev-board-kicad.zip"
+          - label: "Third-party software"
+            name: "thirdParty"
+            label_singular: "software link"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Category", name: "category", widget: "string" }
+              - { label: "External URL", name: "url", widget: "string" }
