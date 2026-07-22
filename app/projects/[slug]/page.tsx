@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
+import rehypeBidi from "@/lib/rehype-bidi";
 import { getAllProjects, getProject } from "@/lib/content";
 import Tag from "@/components/Tag";
 import { formatDate } from "@/components/PostCard";
@@ -65,7 +66,12 @@ export default async function ProjectPage({
       <div className="prose prose-invert mt-8 max-w-none prose-a:text-trace prose-headings:text-silk prose-strong:text-silk prose-code:text-trace prose-pre:border prose-pre:border-trace-dim prose-pre:bg-panel">
         <MDXRemote
           source={project.body}
-          options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+          options={{
+            mdxOptions: {
+              remarkPlugins: [remarkGfm],
+              rehypePlugins: project.dir === "rtl" ? [rehypeBidi] : [],
+            },
+          }}
         />
       </div>
 
