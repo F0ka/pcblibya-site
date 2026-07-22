@@ -30,3 +30,28 @@ body {
   background-color: var(--color-trace);
   color: var(--color-board);
 }
+
+/* Self-hosted Cairo (arabic subset, variable weight 400–700) */
+@font-face {
+  font-family: "Cairo";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/fonts/cairo-arabic.woff2") format("woff2");
+  unicode-range:
+    U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1,
+    U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF,
+    U+FE70-FE74, U+FE76-FEFC;
+}
+
+/* RTL (Arabic) content */
+[dir="rtl"] {
+  font-family: "Cairo", var(--font-sans);
+}
+
+/* Code always stays LTR, even inside RTL articles */
+[dir="rtl"] pre,
+[dir="rtl"] code {
+  direction: ltr;
+  text-align: left;
+}

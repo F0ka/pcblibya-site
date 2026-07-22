@@ -32,7 +32,11 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   return (
-    <article className="mx-auto max-w-3xl">
+    <article
+      className="mx-auto max-w-3xl"
+      dir={post.dir}
+      lang={post.dir === "rtl" ? "ar" : undefined}
+    >
       <Link href="/blog" className="text-sm text-trace hover:underline">
         ← All tutorials
       </Link>

@@ -53,6 +53,13 @@ collections:
             name: "file"
             widget: "string"
             hint: "Files are served by nginx outside the Next app, e.g. /files/esp32-dev-board/esp32-dev-board-kicad.zip"
+      - label: "Text direction"
+        name: "dir"
+        widget: "select"
+        options: ["auto", "rtl", "ltr"]
+        default: "auto"
+        required: false
+        hint: "Auto-detects Arabic content; set explicitly only to override."
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "blog"
@@ -78,6 +85,13 @@ collections:
         widget: "list"
         allow_add: true
         field: { label: "Tag", name: "tag", widget: "string" }
+      - label: "Text direction"
+        name: "dir"
+        widget: "select"
+        options: ["auto", "rtl", "ltr"]
+        default: "auto"
+        required: false
+        hint: "Auto-detects Arabic content; set explicitly only to override."
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "downloads"

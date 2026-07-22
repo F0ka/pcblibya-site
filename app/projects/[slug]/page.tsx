@@ -32,7 +32,11 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   return (
-    <article className="mx-auto max-w-3xl">
+    <article
+      className="mx-auto max-w-3xl"
+      dir={project.dir}
+      lang={project.dir === "rtl" ? "ar" : undefined}
+    >
       <Link
         href="/projects"
         className="text-sm text-trace hover:underline"

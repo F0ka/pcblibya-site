@@ -9,6 +9,8 @@ export interface DownloadEntry {
   file: string;
 }
 
+export type TextDirection = "rtl" | "ltr";
+
 export interface ProjectFrontmatter {
   title: string;
   date: string;
@@ -17,6 +19,7 @@ export interface ProjectFrontmatter {
   tags: string[];
   status: string;
   downloads?: DownloadEntry[];
+  dir?: "auto" | TextDirection;
 }
 
 export interface PostFrontmatter {
@@ -24,21 +27,37 @@ export interface PostFrontmatter {
   date: string;
   summary: string;
   tags: string[];
+  dir?: "auto" | TextDirection;
 }
 
 export interface Project extends ProjectFrontmatter {
   slug: string;
   body: string;
+  dir: TextDirection;
 }
 
 export interface Post extends PostFrontmatter {
   slug: string;
   body: string;
+  dir: TextDirection;
 }
 
-function readMdxFiles<T extends object>(
+// Arabic (U+0600–U+06FF) and Arabic Supplement (U+0750–U+077F)
+const arabicPattern = /[؀-ۿݐ-ݿ]/;
+function resolveDir(
+  frontmatterDir: "auto" | TextDirection | undefined,
+  ...texts: string[]
+): TextDirection {
+  if (frontmatterDir === "rtl" || frontmatterDir === "ltr") {
+    return frontmatterDir;
+  }
+  // missing or "auto" — detect from content
+  return texts.some((text) => arabicPattern.test(text)) ? "rtl" : "ltr";
+}
+
+function readMdxFiles<T extends { title: string; summary: string; dir?: "auto" | TextDirection }>(
   subdir: string
-): Array<T & { slug: string; body: string }> {
+): Array<T & { slug: string; body: string; dir: TextDirection }> {
   const dir = path.join(contentDir, subdir);
   if (!fs.existsSync(dir)) return [];
 
@@ -49,7 +68,13 @@ function readMdxFiles<T extends object>(
       const slug = file.replace(/\.mdx$/, "");
       const raw = fs.readFileSync(path.join(dir, file), "utf8");
       const { data, content } = matter(raw);
-      return { ...(data as T), slug, body: content };
+      const frontmatter = data as T;
+      return {
+        ...frontmatter,
+        slug,
+        body: content,
+        dir: resolveDir(frontmatter.dir, frontmatter.title, frontmatter.summary, content),
+      };
     });
 }
 
