@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-board: #060a07;
+  --color-panel: #0c130e;
+  --color-trace: #00a651;
+  --color-trace-dim: #0d3d24;
+  --color-copper: #c97b2d;
+  --color-silk: #d7e4dc;
+  --color-muted: #7d9486;
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+body {
+  background-color: var(--color-board);
+  color: var(--color-silk);
+  /* subtle circuit-trace grid */
+  background-image:
+    linear-gradient(to right, rgb(0 166 81 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 166 81 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+::selection {
+  background-color: var(--color-trace);
+  color: var(--color-board);
+}

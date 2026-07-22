@@ -1,0 +1,52 @@
+---
+title: "ESP32 Development Board"
+date: "2026-07-01"
+summary: "A compact ESP32-WROOM-32 development board with USB-C, auto-reset circuitry and breadboard-friendly headers, designed in KiCad 8."
+cover: "/images/esp32-dev-board-cover.svg"
+tags: ["KiCad"]
+status: "Completed"
+downloads:
+  - label: "KiCad project (zip)"
+    file: "/files/esp32-dev-board/esp32-dev-board-kicad.zip"
+  - label: "Gerber files (zip)"
+    file: "/files/esp32-dev-board/esp32-dev-board-gerbers.zip"
+---
+
+## Overview
+
+This is a compact development board built around the **ESP32-WROOM-32** module. I designed it because most off-the-shelf dev boards are too wide for a single breadboard strip and waste pins. The board breaks out all usable GPIO, includes a proper auto-reset circuit for flashing, and uses USB-C for power and programming.
+
+The full KiCad project and fabrication-ready Gerbers are available in the downloads section below — feel free to manufacture it yourself or use it as a starting point for your own design.
+
+## Specifications
+
+| Feature | Detail |
+| --- | --- |
+| MCU module | ESP32-WROOM-32E (4 MB flash) |
+| USB | USB-C, CP2102N USB-to-UART bridge |
+| Input voltage | 5 V via USB-C or VIN pin |
+| Regulator | AMS1117-3.3 (1 A) |
+| GPIO | 30 pins broken out on 2.54 mm headers |
+| Board size | 54 × 28 mm, 2 layers, 1 oz copper |
+| Antenna | On-module PCB antenna, keep-out respected |
+
+## Design Notes
+
+### Power
+
+The AMS1117 is not the most efficient regulator, but it is cheap, available everywhere in Libya, and forgiving. I added generous input/output capacitance (22 µF tantalum + 100 nF ceramic) and a thermal pour under the tab. If you build a battery-powered variant, swap it for a buck converter or an LDO like the HT7833.
+
+### Auto-reset circuit
+
+The classic two-transistor (2N7002) auto-reset circuit drives `EN` and `IO0` from the CP2102N's `DTR`/`RTS` lines, so flashing works without holding any buttons. `BOOT` and `EN` buttons are still populated for manual control.
+
+### Layout
+
+- USB-C connector placed mid-board on the short edge so the board hangs off the breadboard by only one row.
+- All decoupling capacitors within 2 mm of their power pins.
+- The RF keep-out area under the module antenna is respected on **all** layers — no copper, no silkscreen.
+- 4-layer was tempting for the ground plane, but 2-layer with careful stitching vias keeps fabrication cost low at JLCPCB.
+
+## Fabrication
+
+The Gerbers are generated with JLCPCB's design rules: 0.15 mm minimum trace/space, 0.3 mm minimum drill. Order with 1.6 mm thickness and green solder mask for the classic look — or black, I won't judge.

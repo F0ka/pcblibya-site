@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Generic PCB placeholder cover">
+  <rect width="640" height="360" fill="#0c130e"/>
+  <g stroke="#0d3d24" stroke-width="1">
+    <path d="M0 60h640M0 120h640M0 180h640M0 240h640M0 300h640"/>
+    <path d="M80 0v360M160 0v360M240 0v360M320 0v360M400 0v360M480 0v360M560 0v360"/>
+  </g>
+  <g stroke="#00a651" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M60 300h120l40-40h80"/>
+    <path d="M60 240h80l40 40h60"/>
+    <path d="M300 260h100l40-40h140"/>
+    <path d="M300 60v80l40 40h120l40-40h80"/>
+    <path d="M420 120v-60h100" stroke="#c97b2d"/>
+  </g>
+  <g fill="#00a651">
+    <circle cx="60" cy="300" r="8"/>
+    <circle cx="60" cy="240" r="8"/>
+    <circle cx="300" cy="60" r="8"/>
+    <circle cx="580" cy="220" r="8"/>
+    <circle cx="580" cy="140" r="8"/>
+  </g>
+  <circle cx="520" cy="60" r="8" fill="#c97b2d"/>
+  <text x="320" y="330" font-family="monospace" font-size="18" fill="#00a651" text-anchor="middle">PCB LIBYA</text>
+</svg>
