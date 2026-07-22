@@ -44,6 +44,30 @@ export default function AboutPage() {
       </section>
 
       <section className="rounded-lg border border-trace-dim bg-panel p-6">
+        <h2 className="text-xl font-bold text-silk">Community &amp; Mission</h2>
+        <p className="mt-2 text-sm text-muted">
+          PCB Libya is more than a personal portfolio — the goal is to make
+          PCB design knowledge accessible to Libyan and Arabic-speaking
+          engineers and students. That means tutorials in both Arabic and
+          English, open-source component libraries under {site.license}, and
+          complete project files you can manufacture yourself.
+        </p>
+        <p className="mt-3 text-sm text-muted">
+          Follow the community on Facebook and get involved: ask questions,
+          share your own boards, or contribute symbols and footprints to the
+          open library.
+        </p>
+        <a
+          href={site.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block rounded-md border border-trace px-5 py-2.5 text-sm font-semibold text-trace transition-colors hover:bg-trace hover:text-board"
+        >
+          PCB Libya on Facebook ↗
+        </a>
+      </section>
+
+      <section className="rounded-lg border border-trace-dim bg-panel p-6">
         <h2 className="text-xl font-bold text-silk">Contact</h2>
         <p className="mt-2 text-sm text-muted">
           Questions, collaboration ideas or custom board design requests —

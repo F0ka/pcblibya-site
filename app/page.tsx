@@ -14,24 +14,28 @@ export default function Home() {
       <section className="rounded-xl border border-trace-dim bg-panel px-6 py-14 text-center sm:px-12">
         <p className="font-mono text-sm text-trace">// {site.url}</p>
         <h1 className="mt-3 text-3xl font-bold tracking-tight text-silk sm:text-5xl">
-          {site.name} — {site.tagline}
+          The home of Libyan PCB geeks
         </h1>
         <p className="mx-auto mt-4 max-w-2xl text-muted">
-          {site.description}
+          Open hardware designs, shared knowledge and hands-on tutorials in
+          Arabic and English — built with KiCad and Altium Designer, by and
+          for Libya&apos;s electronics community.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
-            href="/projects"
+            href="/blog"
             className="rounded-md bg-trace px-5 py-2.5 text-sm font-semibold text-board transition-opacity hover:opacity-85"
           >
-            View Projects
+            Browse tutorials
           </Link>
-          <Link
-            href="/blog"
+          <a
+            href={site.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
             className="rounded-md border border-trace px-5 py-2.5 text-sm font-semibold text-trace transition-colors hover:bg-trace hover:text-board"
           >
-            Read Tutorials
-          </Link>
+            Follow the community ↗
+          </a>
         </div>
       </section>
 

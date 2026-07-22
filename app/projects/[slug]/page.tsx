@@ -5,6 +5,8 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeBidi from "@/lib/rehype-bidi";
 import { getAllProjects, getProject } from "@/lib/content";
+import { site } from "@/lib/site";
+import ShareButtons from "@/components/ShareButtons";
 import Tag from "@/components/Tag";
 import { formatDate } from "@/components/PostCard";
 
@@ -20,7 +22,15 @@ export async function generateMetadata({
   const { slug } = await params;
   const project = getProject(slug);
   if (!project) return {};
-  return { title: project.title, description: project.summary };
+  return {
+    title: project.title,
+    description: project.summary,
+    openGraph: {
+      title: project.title,
+      description: project.summary,
+      images: project.cover ? [project.cover] : undefined,
+    },
+  };
 }
 
 export default async function ProjectPage({
@@ -95,6 +105,12 @@ export default async function ProjectPage({
           </ul>
         </section>
       )}
+      <div className="mt-10 border-t border-trace-dim pt-6">
+        <ShareButtons
+          url={`${site.url}/projects/${project.slug}`}
+          title={project.title}
+        />
+      </div>
     </article>
   );
 }

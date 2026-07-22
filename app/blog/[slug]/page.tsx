@@ -5,6 +5,8 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeBidi from "@/lib/rehype-bidi";
 import { getAllPosts, getPost } from "@/lib/content";
+import { site } from "@/lib/site";
+import ShareButtons from "@/components/ShareButtons";
 import Tag from "@/components/Tag";
 import { formatDate } from "@/components/PostCard";
 
@@ -20,7 +22,16 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
-  return { title: post.title, description: post.summary };
+  return {
+    title: post.title,
+    description: post.summary,
+    openGraph: {
+      type: "article",
+      title: post.title,
+      description: post.summary,
+      publishedTime: post.date,
+    },
+  };
 }
 
 export default async function BlogPostPage({
@@ -62,6 +73,9 @@ export default async function BlogPostPage({
             },
           }}
         />
+      </div>
+      <div className="mt-10 border-t border-trace-dim pt-6">
+        <ShareButtons url={`${site.url}/blog/${post.slug}`} title={post.title} />
       </div>
     </article>
   );

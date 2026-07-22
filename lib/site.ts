@@ -1,10 +1,11 @@
 export const site = {
   name: "PCB Libya",
   url: "https://pcblibya.com",
-  tagline: "Open hardware designs, libraries & tutorials",
+  tagline: "Libya's PCB Design Community",
   description:
-    "Portfolio, tutorials and open-source component libraries from a Libyan PCB designer working in Altium Designer and KiCad.",
+    "The home of Libyan PCB designers: open hardware designs, component libraries and tutorials in Arabic and English — KiCad and Altium Designer.",
   github: "https://github.com/pcblibya/pcblibya-library",
+  facebook: "https://facebook.com/pcblibya",
   email: "contact@pcblibya.com",
   license: "CERN-OHL-S-2.0",
 } as const;
