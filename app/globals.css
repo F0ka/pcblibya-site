@@ -10,25 +10,52 @@
   --color-silk: #d7e4dc;
   --color-muted: #7d9486;
   --font-sans:
-    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif;
+    "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-display:
+    "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
   --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
 }
 
-body {
-  background-color: var(--color-board);
-  color: var(--color-silk);
-  /* subtle circuit-trace grid */
-  background-image:
-    linear-gradient(to right, rgb(0 166 81 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(0 166 81 / 0.05) 1px, transparent 1px);
-  background-size: 48px 48px;
+/* ---------- Self-hosted fonts ---------- */
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("/fonts/space-grotesk-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+    U+FFFD;
 }
 
-::selection {
-  background-color: var(--color-trace);
-  color: var(--color-board);
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-400-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+    U+FFFD;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-mono-500-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF,
+    U+FFFD;
 }
 
 /* Self-hosted Cairo (arabic subset, variable weight 400–700) */
@@ -58,7 +85,116 @@ body {
     U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* RTL (Arabic) content */
+/* ---------- Board surface ---------- */
+
+body {
+  background-color: var(--color-board);
+  color: var(--color-silk);
+  /* barely-visible PCB grid + hatch texture */
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgb(0 166 81 / 0.025) 0 1px,
+      transparent 1px 6px
+    ),
+    linear-gradient(to right, rgb(0 166 81 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 166 81 / 0.045) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    48px 48px,
+    48px 48px;
+}
+
+/* single subtle green glow, used behind the hero only */
+.hero-glow {
+  background: radial-gradient(
+    ellipse 60% 55% at 70% 30%,
+    rgb(0 166 81 / 0.09),
+    transparent 70%
+  );
+}
+
+::selection {
+  background-color: var(--color-trace);
+  color: var(--color-board);
+}
+
+/* ---------- PCB motifs ---------- */
+
+/* fiducial dot — small copper-ringed registration mark in panel corners */
+.fiducial {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  border: 2px solid var(--color-copper);
+  background: var(--color-board);
+  opacity: 0.7;
+}
+
+/* castellated-hole strip (board edge), used atop the footer */
+.castellated {
+  height: 14px;
+  background-image: radial-gradient(
+    circle at center,
+    var(--color-trace-dim) 3px,
+    transparent 3.5px
+  );
+  background-size: 28px 14px;
+  background-position: center;
+  background-repeat: repeat-x;
+}
+
+/* glowing hover for board panels — no layout shift */
+.panel-glow {
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+.panel-glow:hover {
+  border-color: var(--color-trace);
+  box-shadow:
+    0 0 0 1px var(--color-trace),
+    0 0 18px rgb(0 166 81 / 0.18);
+}
+
+/* silkscreen label — mono uppercase with a trace line extending from it */
+.silk-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-trace);
+}
+
+/* trace-draw animation for hero SVG strokes */
+@keyframes trace-draw {
+  from {
+    stroke-dashoffset: var(--trace-len, 600);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.trace-animate {
+  stroke-dasharray: var(--trace-len, 600);
+  stroke-dashoffset: var(--trace-len, 600);
+  animation: trace-draw 2.2s ease-out forwards;
+}
+.trace-animate-delay {
+  animation-delay: 0.7s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trace-animate {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ---------- RTL (Arabic) content ---------- */
+
 [dir="rtl"] {
   font-family: "Cairo", var(--font-sans);
 }

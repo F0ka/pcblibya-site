@@ -50,17 +50,18 @@ export default async function ProjectPage({
     >
       <Link
         href="/projects"
-        className="text-sm text-trace hover:underline"
+        className="font-mono text-[11px] uppercase tracking-[0.16em] text-trace hover:underline"
       >
-        ← All projects
+        &#8212;&#9702; All projects
       </Link>
-      <h1 className="mt-4 text-3xl font-bold text-silk sm:text-4xl">
+      <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-silk sm:text-4xl">
         {project.title}
       </h1>
-      <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted">
+      <div className="mt-3 flex flex-wrap items-center gap-3 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
         <time>{formatDate(project.date)}</time>
-        <span>·</span>
-        <span>{project.status}</span>
+        <span className="h-px w-8 bg-trace-dim" aria-hidden />
+        <span className="text-copper">{project.status}</span>
+        <span className="h-px w-8 bg-trace-dim" aria-hidden />
         <span className="flex gap-2">
           {project.tags.map((tag) => (
             <Tag key={tag} label={tag} />
@@ -71,7 +72,7 @@ export default async function ProjectPage({
       <img
         src={project.cover}
         alt={project.title}
-        className="mt-6 w-full rounded-lg border border-trace-dim"
+        className="mt-6 w-full rounded-sm border border-trace-dim"
       />
       <div className="prose prose-invert mt-8 max-w-none prose-a:text-trace prose-headings:text-silk prose-strong:text-silk prose-code:text-trace prose-pre:border prose-pre:border-trace-dim prose-pre:bg-panel">
         <MDXRemote
@@ -86,14 +87,14 @@ export default async function ProjectPage({
       </div>
 
       {project.downloads && project.downloads.length > 0 && (
-        <section className="mt-12 rounded-lg border border-trace-dim bg-panel p-6">
-          <h2 className="text-xl font-bold text-silk">Downloads</h2>
+        <section className="mt-12 rounded-sm border border-trace-dim bg-panel p-6">
+          <h2 className="font-display text-xl font-bold text-silk">Downloads</h2>
           <ul className="mt-4 space-y-3">
             {project.downloads.map((download) => (
               <li key={download.file}>
                 <a
                   href={download.file}
-                  className="flex items-center justify-between rounded-md border border-trace-dim px-4 py-3 text-sm text-silk transition-colors hover:border-trace hover:text-trace"
+                  className="flex items-center justify-between rounded-sm border border-trace-dim px-4 py-3 font-mono text-xs tracking-wider text-silk transition-colors hover:border-trace hover:text-trace"
                 >
                   <span>{download.label}</span>
                   <span aria-hidden className="font-mono text-trace">

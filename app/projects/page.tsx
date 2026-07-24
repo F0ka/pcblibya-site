@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getAllProjects } from "@/lib/content";
 import ProjectCard from "@/components/ProjectCard";
+import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -12,11 +13,12 @@ export default function ProjectsPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-silk">Projects</h1>
-      <p className="mt-2 text-muted">
-        A selection of boards I have designed, from prototype to production.
+      <SectionHeader index="01" label="Projects" />
+      <p className="-mt-4 mb-8 max-w-2xl text-sm leading-relaxed text-muted">
+        A selection of boards designed here in Libya — from prototype to
+        production, with complete open project files.
       </p>
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}

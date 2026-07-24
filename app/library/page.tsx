@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
+import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Component Library",
@@ -11,7 +12,8 @@ export default function LibraryPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-12">
       <div>
-        <h1 className="text-3xl font-bold text-silk">
+        <SectionHeader index="01" label="Component Library" />
+        <h1 className="-mt-4 font-display text-3xl font-bold tracking-tight text-silk">
           Open Component Library
         </h1>
         <p className="mt-2 text-muted">
@@ -23,15 +25,15 @@ export default function LibraryPage() {
           href={site.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-block rounded-md bg-trace px-5 py-2.5 text-sm font-semibold text-board transition-opacity hover:opacity-85"
+          className="mt-4 inline-block rounded-sm bg-trace px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-[0.16em] text-board transition-opacity hover:opacity-85"
         >
           View on GitHub →
         </a>
       </div>
 
       {/* KiCad */}
-      <section className="rounded-lg border border-trace-dim bg-panel p-6">
-        <h2 className="text-xl font-bold text-silk">KiCad Libraries</h2>
+      <section className="relative rounded-sm border border-trace-dim bg-panel p-6">
+        <h2 className="font-display text-xl font-bold text-silk">KiCad Libraries</h2>
         <p className="mt-2 text-sm text-muted">
           The repository contains three folders per KiCad conventions:
         </p>
@@ -51,11 +53,11 @@ export default function LibraryPage() {
             models
           </li>
         </ul>
-        <h3 className="mt-5 font-semibold text-silk">Installation</h3>
+        <h3 className="mt-5 font-mono text-xs font-medium uppercase tracking-[0.16em] text-trace">Installation</h3>
         <ol className="mt-2 list-decimal space-y-2 pl-5 text-sm text-muted">
           <li>
             Clone or download the repository:
-            <pre className="mt-2 overflow-x-auto rounded-md border border-trace-dim bg-board p-3 font-mono text-xs text-silk">
+            <pre className="mt-2 overflow-x-auto rounded-sm border border-trace-dim bg-board p-3 font-mono text-xs text-silk">
               git clone {site.github}.git
             </pre>
           </li>
@@ -83,8 +85,8 @@ export default function LibraryPage() {
       </section>
 
       {/* Altium */}
-      <section className="rounded-lg border border-trace-dim bg-panel p-6">
-        <h2 className="text-xl font-bold text-silk">Altium Libraries</h2>
+      <section className="relative rounded-sm border border-trace-dim bg-panel p-6">
+        <h2 className="font-display text-xl font-bold text-silk">Altium Libraries</h2>
         <p className="mt-2 text-sm text-muted">
           For Altium Designer users the same components are provided as
           compiled libraries:
@@ -99,7 +101,7 @@ export default function LibraryPage() {
             libraries
           </li>
         </ul>
-        <h3 className="mt-5 font-semibold text-silk">Installation</h3>
+        <h3 className="mt-5 font-mono text-xs font-medium uppercase tracking-[0.16em] text-trace">Installation</h3>
         <ol className="mt-2 list-decimal space-y-2 pl-5 text-sm text-muted">
           <li>Download or clone the repository from GitHub.</li>
           <li>
@@ -116,8 +118,8 @@ export default function LibraryPage() {
       </section>
 
       {/* License */}
-      <section className="rounded-lg border border-trace-dim bg-panel p-6">
-        <h2 className="text-xl font-bold text-silk">License</h2>
+      <section className="relative rounded-sm border border-trace-dim bg-panel p-6">
+        <h2 className="font-display text-xl font-bold text-silk">License</h2>
         <p className="mt-2 text-sm text-muted">
           All libraries are released under the{" "}
           <strong className="text-silk">{site.license}</strong> (CERN Open

@@ -49,14 +49,18 @@ export default async function BlogPostPage({
       dir={post.dir}
       lang={post.dir === "rtl" ? "ar" : undefined}
     >
-      <Link href="/blog" className="text-sm text-trace hover:underline">
-        ← All tutorials
+      <Link
+        href="/blog"
+        className="font-mono text-[11px] uppercase tracking-[0.16em] text-trace hover:underline"
+      >
+        &#8212;&#9702; All tutorials
       </Link>
-      <h1 className="mt-4 text-3xl font-bold text-silk sm:text-4xl">
+      <h1 className="mt-4 font-display text-3xl font-bold tracking-tight text-silk sm:text-4xl">
         {post.title}
       </h1>
-      <div className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted">
+      <div className="mt-3 flex flex-wrap items-center gap-3 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
         <time>{formatDate(post.date)}</time>
+        <span className="h-px w-8 bg-trace-dim" aria-hidden />
         <span className="flex gap-2">
           {post.tags.map((tag) => (
             <Tag key={tag} label={tag} />

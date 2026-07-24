@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/content";
 import PostCard from "@/components/PostCard";
+import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
   title: "Tutorials",
@@ -12,12 +13,12 @@ export default function BlogPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-silk">Tutorials</h1>
-      <p className="mt-2 text-muted">
-        Hands-on PCB design tutorials — from your first schematic to
-        fabrication-ready Gerbers.
+      <SectionHeader index="01" label="Tutorials" />
+      <p className="-mt-4 mb-8 max-w-2xl text-sm leading-relaxed text-muted">
+        Hands-on PCB design tutorials in Arabic and English — from your first
+        schematic to fabrication-ready Gerbers.
       </p>
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
           <PostCard key={post.slug} post={post} />
         ))}

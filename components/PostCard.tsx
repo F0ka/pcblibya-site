@@ -14,14 +14,22 @@ export default function PostCard({ post }: { post: Post }) {
   return (
     <Link
       href={`/blog/${post.slug}`}
-      className="group flex flex-col gap-2 rounded-lg border border-trace-dim bg-panel p-5 transition-colors hover:border-trace"
+      className="panel-glow group relative flex flex-col gap-3 rounded-sm border border-trace-dim bg-panel p-5"
     >
-      <time className="text-xs text-muted">{formatDate(post.date)}</time>
-      <h3 className="font-semibold text-silk group-hover:text-trace transition-colors">
+      {/* fiducial */}
+      <span aria-hidden className="fiducial end-2 top-2" />
+      <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+        <time>{post.date}</time>
+        <span className="h-px flex-1 bg-trace-dim" aria-hidden />
+        {post.dir === "rtl" && <span className="text-copper">AR</span>}
+      </div>
+      <h3 className="font-display text-lg font-bold text-silk transition-colors group-hover:text-trace">
         {post.title}
       </h3>
-      <p className="flex-1 text-sm text-muted">{post.summary}</p>
-      <div className="flex flex-wrap gap-2 pt-1">
+      <p className="flex-1 text-sm leading-relaxed text-muted">
+        {post.summary}
+      </p>
+      <div className="flex flex-wrap gap-2 border-t border-trace-dim pt-3">
         {post.tags.map((tag) => (
           <Tag key={tag} label={tag} />
         ))}

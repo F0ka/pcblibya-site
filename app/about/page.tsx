@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import Tag from "@/components/Tag";
+import SectionHeader from "@/components/SectionHeader";
 
 export const metadata: Metadata = {
   title: "About",
@@ -19,7 +20,8 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-10">
       <div>
-        <h1 className="text-3xl font-bold text-silk">About</h1>
+        <SectionHeader index="01" label="About" />
+        <h1 className="-mt-4 font-display text-3xl font-bold tracking-tight text-silk">About</h1>
         <p className="mt-4 text-muted">
           I&apos;m a PCB designer based in Libya, passionate about open
           hardware. I design circuit boards for a living — from simple
@@ -35,7 +37,7 @@ export default function AboutPage() {
       </div>
 
       <section>
-        <h2 className="text-xl font-bold text-silk">Skills</h2>
+        <h2 className="font-display text-xl font-bold text-silk">Skills</h2>
         <div className="mt-4 flex flex-wrap gap-2">
           {skills.map((skill) => (
             <Tag key={skill} label={skill} />
@@ -43,8 +45,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="rounded-lg border border-trace-dim bg-panel p-6">
-        <h2 className="text-xl font-bold text-silk">Community &amp; Mission</h2>
+      <section className="relative rounded-sm border border-trace-dim bg-panel p-6">
+        <h2 className="font-display text-xl font-bold text-silk">Community &amp; Mission</h2>
         <p className="mt-2 text-sm text-muted">
           PCB Libya is more than a personal portfolio — the goal is to make
           PCB design knowledge accessible to Libyan and Arabic-speaking
@@ -61,14 +63,14 @@ export default function AboutPage() {
           href={site.facebook}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-block rounded-md border border-trace px-5 py-2.5 text-sm font-semibold text-trace transition-colors hover:bg-trace hover:text-board"
+          className="mt-4 inline-block rounded-sm border border-trace px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-[0.16em] text-trace transition-colors hover:bg-trace hover:text-board"
         >
           PCB Libya on Facebook ↗
         </a>
       </section>
 
-      <section className="rounded-lg border border-trace-dim bg-panel p-6">
-        <h2 className="text-xl font-bold text-silk">Contact</h2>
+      <section className="relative rounded-sm border border-trace-dim bg-panel p-6">
+        <h2 className="font-display text-xl font-bold text-silk">Contact</h2>
         <p className="mt-2 text-sm text-muted">
           Questions, collaboration ideas or custom board design requests —
           get in touch.
@@ -76,7 +78,7 @@ export default function AboutPage() {
         <div className="mt-4 flex flex-wrap gap-3">
           <a
             href={`mailto:${site.email}`}
-            className="rounded-md bg-trace px-5 py-2.5 text-sm font-semibold text-board transition-opacity hover:opacity-85"
+            className="rounded-sm bg-trace px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-[0.16em] text-board transition-opacity hover:opacity-85"
           >
             {site.email}
           </a>
@@ -84,7 +86,7 @@ export default function AboutPage() {
             href={site.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-md border border-trace px-5 py-2.5 text-sm font-semibold text-trace transition-colors hover:bg-trace hover:text-board"
+            className="rounded-sm border border-trace px-5 py-2.5 font-mono text-xs font-medium uppercase tracking-[0.16em] text-trace transition-colors hover:bg-trace hover:text-board"
           >
             GitHub ↗
           </a>
