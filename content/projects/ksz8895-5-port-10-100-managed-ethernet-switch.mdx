@@ -1,0 +1,69 @@
+---
+title: KSZ8895 5-Port 10/100 Managed Ethernet Switch
+date: 2026-07-25
+summary: A compact 4-layer PCB implementing a 5-port 10/100 Mbps managed
+  Ethernet switch using the Micrel/Microchip KSZ8895RQXC. Features integrated
+  RJ45 magnetics, single 3.3V supply, and JLCPCB-ready design. Ideal for
+  industrial networking, embedded systems, and custom switch applications.
+cover: /images/esp32-dev-board-cover.svg
+tags:
+  - Ethernet
+  - Switch
+  - KSZ8895
+  - RJ45
+  - Networking
+  - KiCad
+  - 4-Layer
+status: In progress
+---
+## KSZ8895 5-Port 10/100 Managed Ethernet Switch
+
+A fully integrated 5-port 10/100 Mbps managed Ethernet switch based on the Micrel KSZ8895RQXC in a compact 100×60mm 4-layer PCB.
+
+### Features
+
+- 5× 10/100 Mbps RJ45 ports with integrated magnetics (Hanrun HR911105A)
+- KSZ8895RQXC managed switch IC (128-pin QFP) — supports VLAN, QoS, IGMP snooping
+- Single 3.3V supply via AP1117-33 LDO (5V barrel jack input)
+- 25 MHz crystal oscillator
+- Reverse polarity protection (PMOS + Schottky)
+- 4-layer stackup with solid GND pours on all layers
+- 4× M3 mounting holes
+- JLCPCB-compatible design rules (0.15mm clearance, 0.2mm tracks)
+
+### Specifications
+
+| Parameter | Value |
+|-----------|-------|
+| Dimensions | 100.05 × 60.05 mm |
+| Layers | 4 (F.Cu, In1, In2, B.Cu) |
+| Ports | 5× RJ45 10/100 |
+| Input Voltage | 5V DC (barrel jack) |
+| Operating Voltage | 3.3V |
+| Copper | 1 oz, ENIG recommended |
+| Min Trace/Space | 0.15mm / 0.15mm |
+
+### Pin Headers
+
+| Header | Function |
+|--------|----------|
+| J7 | UART/SMI access |
+| J8 | SPI/Management interface |
+| SW1 | Reset button |
+
+### Manufacturing
+
+Designed for JLCPCB 4-layer service. All design rules exceed JLCPCB minimums:
+- Clearance: 0.15mm (JLCPCB min: 0.09mm)
+- Track width: 0.2mm (JLCPCB min: 0.09mm)
+- Via: 0.6mm/0.3mm (JLCPCB min: 0.25mm/0.15mm)
+
+### Status
+
+- [x] Schematic (ERC passed)
+- [x] PCB layout (DRC passed)
+- [x] Copper pours + stitching vias
+- [ ] Placement finalization
+- [ ] Autorouting
+- [ ] Gerber export
+- [ ] Assembly
