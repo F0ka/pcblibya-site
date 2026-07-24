@@ -55,7 +55,7 @@ function resolveDir(
   return texts.some((text) => arabicPattern.test(text)) ? "rtl" : "ltr";
 }
 
-function readMdxFiles<T extends { title: string; summary: string; dir?: "auto" | TextDirection }>(
+function readMdxFiles<T extends { title: string; summary: string; date: string; dir?: "auto" | TextDirection }>(
   subdir: string
 ): Array<T & { slug: string; body: string; dir: TextDirection }> {
   const dir = path.join(contentDir, subdir);
@@ -69,8 +69,17 @@ function readMdxFiles<T extends { title: string; summary: string; dir?: "auto" |
       const raw = fs.readFileSync(path.join(dir, file), "utf8");
       const { data, content } = matter(raw);
       const frontmatter = data as T;
+      // gray-matter parses unquoted YAML dates (date: 2026-07-25, as written by
+      // the CMS) into JS Date objects — normalize to a plain string so React
+      // can render it and sorting stays consistent.
+      const rawDate = (frontmatter as unknown as { date?: unknown }).date;
+      const date =
+        rawDate instanceof Date
+          ? rawDate.toISOString().slice(0, 10)
+          : String(rawDate ?? "");
       return {
         ...frontmatter,
+        date,
         slug,
         body: content,
         dir: resolveDir(frontmatter.dir, frontmatter.title, frontmatter.summary, content),
