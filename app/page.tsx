@@ -7,13 +7,6 @@ import SectionHeader from "@/components/SectionHeader";
 import TraceDivider from "@/components/TraceDivider";
 import HeroArt from "@/components/HeroArt";
 
-const stats = [
-  ["EDA", "KICAD + ALTIUM"],
-  ["LANG", "AR + EN"],
-  ["LIBS", "CERN-OHL-S-2.0"],
-  ["FILES", "OPEN / FREE"],
-] as const;
-
 export default function Home() {
   const projects = getAllProjects().slice(0, 3);
   const posts = getAllPosts().slice(0, 3);
@@ -59,21 +52,6 @@ export default function Home() {
             <span aria-hidden className="fiducial end-2 top-2 z-10" />
             <HeroArt />
           </div>
-        </div>
-
-        {/* capability ticker */}
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-y border-trace-dim py-3">
-          {stats.map(([key, value], i) => (
-            <p
-              key={key}
-              className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted"
-            >
-              <span className="text-copper">{key}:</span> {value}
-              {i < stats.length - 1 && (
-                <span className="ms-6 hidden text-trace-dim sm:inline">/</span>
-              )}
-            </p>
-          ))}
         </div>
       </section>
 
