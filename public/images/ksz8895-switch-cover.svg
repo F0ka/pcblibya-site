@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="KSZ8895 5-port Ethernet switch board placeholder cover">
+  <rect width="640" height="360" fill="#0c130e"/>
+  <g stroke="#0d3d24" stroke-width="1">
+    <path d="M0 60h640M0 120h640M0 180h640M0 240h640M0 300h640"/>
+    <path d="M80 0v360M160 0v360M240 0v360M320 0v360M400 0v360M480 0v360M560 0v360"/>
+  </g>
+  <!-- board -->
+  <rect x="100" y="60" width="440" height="240" rx="8" fill="#062015" stroke="#00a651" stroke-width="2"/>
+  <!-- RJ45 ports -->
+  <g fill="#0c130e" stroke="#7d9486" stroke-width="1.5">
+    <rect x="112" y="90" width="64" height="52" rx="3"/>
+    <rect x="112" y="150" width="64" height="52" rx="3"/>
+    <rect x="112" y="210" width="64" height="52" rx="3"/>
+    <rect x="184" y="90" width="64" height="52" rx="3"/>
+    <rect x="184" y="150" width="64" height="52" rx="3"/>
+  </g>
+  <!-- RJ45 contact fingers -->
+  <g stroke="#c97b2d" stroke-width="1.5">
+    <path d="M120 98h48M120 104h48M120 158h48M120 164h48M120 218h48M120 224h48M192 98h48M192 104h48M192 158h48M192 164h48"/>
+  </g>
+  <!-- magnetics -->
+  <g fill="#1b2b21" stroke="#7d9486" stroke-width="1">
+    <rect x="266" y="96" width="44" height="40" rx="2"/>
+    <rect x="266" y="156" width="44" height="40" rx="2"/>
+    <rect x="266" y="216" width="44" height="40" rx="2"/>
+  </g>
+  <!-- KSZ8895 QFP -->
+  <rect x="360" y="120" width="110" height="110" rx="3" fill="#0c130e" stroke="#00a651" stroke-width="2"/>
+  <rect x="380" y="140" width="70" height="70" rx="2" fill="#1b2b21" stroke="#7d9486" stroke-width="1"/>
+  <circle cx="392" cy="152" r="4" fill="#00a651"/>
+  <g stroke="#00a651" stroke-width="2">
+    <path d="M370 120v-14M390 120v-14M410 120v-14M430 120v-14M450 120v-14"/>
+    <path d="M370 230v14M390 230v14M410 230v14M430 230v14M450 230v14"/>
+    <path d="M360 130h-14M360 150h-14M360 170h-14M360 190h-14M360 210h-14"/>
+    <path d="M470 130h14M470 150h14M470 170h14M470 190h14M470 210h14"/>
+  </g>
+  <!-- traces -->
+  <g stroke="#00a651" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M248 116h40l22 18"/>
+    <path d="M248 176h40l22-10"/>
+    <path d="M248 236h50l24-20"/>
+    <path d="M310 116h30"/>
+  </g>
+  <g stroke="#c97b2d" stroke-width="2" fill="none" stroke-linecap="round">
+    <path d="M484 160h30v60h-24"/>
+    <path d="M415 244v26h-60"/>
+  </g>
+  <!-- mounting holes -->
+  <g fill="#0c130e" stroke="#7d9486" stroke-width="1.5">
+    <circle cx="116" cy="74" r="5"/>
+    <circle cx="524" cy="74" r="5"/>
+    <circle cx="116" cy="286" r="5"/>
+    <circle cx="524" cy="286" r="5"/>
+  </g>
+  <text x="320" y="330" font-family="monospace" font-size="18" fill="#00a651" text-anchor="middle">KSZ8895 5-PORT SWITCH</text>
+</svg>

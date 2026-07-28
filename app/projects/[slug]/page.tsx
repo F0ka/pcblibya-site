@@ -62,7 +62,7 @@ export default async function ProjectPage({
         <span className="h-px w-8 bg-trace-dim" aria-hidden />
         <span className="text-copper">{project.status}</span>
         <span className="h-px w-8 bg-trace-dim" aria-hidden />
-        <span className="flex gap-2">
+        <span className="flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <Tag key={tag} label={tag} />
           ))}

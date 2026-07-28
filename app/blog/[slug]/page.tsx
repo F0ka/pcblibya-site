@@ -61,7 +61,7 @@ export default async function BlogPostPage({
       <div className="mt-3 flex flex-wrap items-center gap-3 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
         <time>{formatDate(post.date)}</time>
         <span className="h-px w-8 bg-trace-dim" aria-hidden />
-        <span className="flex gap-2">
+        <span className="flex flex-wrap gap-2">
           {post.tags.map((tag) => (
             <Tag key={tag} label={tag} />
           ))}
