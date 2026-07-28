@@ -12,11 +12,8 @@ export default function LibraryPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-12">
       <div>
-        <SectionHeader index="01" label="Component Library" />
-        <h1 className="-mt-4 font-display text-3xl font-bold tracking-tight text-silk">
-          Open Component Library
-        </h1>
-        <p className="mt-2 text-muted">
+        <SectionHeader index="01" label="Component Library" pageTitle />
+        <p className="-mt-4 text-muted">
           Every symbol, footprint and 3D model I create for my projects is
           published open-source. Use them in your own designs — commercial or
           personal.

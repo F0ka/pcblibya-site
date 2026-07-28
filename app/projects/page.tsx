@@ -13,7 +13,7 @@ export default function ProjectsPage() {
 
   return (
     <div>
-      <SectionHeader index="01" label="Projects" />
+      <SectionHeader index="01" label="Projects" pageTitle />
       <p className="-mt-4 mb-8 max-w-2xl text-sm leading-relaxed text-muted">
         A selection of boards designed here in Libya — from prototype to
         production, with complete open project files.

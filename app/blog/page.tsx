@@ -13,7 +13,7 @@ export default function BlogPage() {
 
   return (
     <div>
-      <SectionHeader index="01" label="Tutorials" />
+      <SectionHeader index="01" label="Tutorials" pageTitle />
       <p className="-mt-4 mb-8 max-w-2xl text-sm leading-relaxed text-muted">
         Hands-on PCB design tutorials in Arabic and English — from your first
         schematic to fabrication-ready Gerbers.

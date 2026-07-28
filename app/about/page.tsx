@@ -20,9 +20,8 @@ export default function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-10">
       <div>
-        <SectionHeader index="01" label="About" />
-        <h1 className="-mt-4 font-display text-3xl font-bold tracking-tight text-silk">About</h1>
-        <p className="mt-4 text-muted">
+        <SectionHeader index="01" label="About" pageTitle />
+        <p className="-mt-4 text-muted">
           I&apos;m a PCB designer based in Libya, passionate about open
           hardware. I design circuit boards for a living — from simple
           microcontroller breakouts to multi-layer RF and power designs — and I

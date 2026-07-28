@@ -12,7 +12,7 @@ export default function DownloadsPage() {
   return (
     <div className="space-y-16">
       <div>
-        <SectionHeader index="01" label="Download Center" />
+        <SectionHeader index="01" label="Download Center" pageTitle />
         <p className="-mt-4 max-w-2xl text-sm leading-relaxed text-muted">
           Hosted project files and the third-party tools I recommend for PCB
           design.
@@ -79,9 +79,6 @@ export default function DownloadsPage() {
         <h2 className="font-display text-2xl font-bold text-silk">
           Third-Party Software
         </h2>
-        <p className="mt-2 text-sm text-muted">
-          External tools — these links take you to the official sites.
-        </p>
         <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {thirdPartySoftware.map((tool) => (
             <a

@@ -7,6 +7,8 @@ interface SectionHeaderProps {
   label: string;
   href?: string;
   linkText?: string;
+  /** render the label as the page's h1 (use for the top header of a page) */
+  pageTitle?: boolean;
 }
 
 /**
@@ -18,13 +20,15 @@ export default function SectionHeader({
   label,
   href,
   linkText,
+  pageTitle = false,
 }: SectionHeaderProps) {
+  const Label = pageTitle ? "h1" : "span";
   return (
     <div className="mb-8">
       <div className="flex items-center gap-4">
-        <span className="silk-label shrink-0">
+        <Label className="silk-label shrink-0">
           &#8212;&#9702; {label} / {index}
-        </span>
+        </Label>
         <span className="relative h-px flex-1 bg-trace-dim" aria-hidden>
           <span className="absolute end-0 top-1/2 h-2 w-2 -translate-y-1/2 translate-x-1/2 rounded-full border border-trace bg-board" />
         </span>
